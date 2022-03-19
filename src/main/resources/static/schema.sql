@@ -26,3 +26,4 @@ CREATE TABLE "Info"(
     INSERT INTO "Info" VALUES(2, 'Information on Venus', 2);
     INSERT INTO "Info" VALUES(3, 'Information on Earth', 3);
     INSERT INTO "Info" VALUES(4, 'Information on Mars', 4);
+    //7

@@ -20,4 +20,5 @@ public class Server extends HttpServlet{
         resp.setContentType(mimeType);
         IOUtils.copy(file, resp.getOutputStream());
     }
+    //test3
 }
