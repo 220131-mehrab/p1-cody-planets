@@ -40,4 +40,3 @@ function postPlanets(){
         document.querySelector('body').innerHTML = listPlanet(planets);
     });
 }
-//6

@@ -52,8 +52,8 @@ public class App {
         // Connect to DB
         Connection connection = DriverManager.getConnection("jdbc:mem:project:INIT=runscript from 'classpath:schema.sql'", "sa", "");
 
-        connection.DriverManager.getConnection("jdbc:h2:mem", "Planets", "");
-        connection.createStatement().execute(sql"CREATE TABLE PLANETS(id int primary key, Name varchar);
+        // connection.DriverManager.getConnection("jdbc:h2:mem", "Planets", "");
+        // connection.createStatement().execute(sql"CREATE TABLE PLANETS(id int primary key, Name varchar);
 
                 HttpServlet planetServlet = new HttpServlet() {
 
@@ -69,12 +69,13 @@ public class App {
                             System.err.println("Fail to retrieve from db: " + e.getSQLState());
                         }
 
-                        //Get a JSON Mapper
+                        //Get a JSON Mapper 
                         ObjectMapper mapper = new ObjectMapper();
                         String results = mapper.writeValueAsString(planets);
                         resp.setContentType("applicaton/json");
                         resp.getWriter().println(results);
                     }
+                    Planet planet = new Planet();
                     @Override
                     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
                         ObjectMapper mapper = new ObjectMapper();
@@ -82,8 +83,8 @@ public class App {
                         System.out.println(newPlanet);
                         try{
                             PreparedStatement stmt = connection.prepareStatement("insert into 'planet' values(?, ?)");
-                            stmt.setInt(1, newPlanet.getplanetID());
-                            stmt.setString(2, newPlanet.getName());
+                            stmt.setInt(1, planet.getplanetID());
+                            stmt.setString(2, .getName());
                             stmt.executeUpdate();
                         } catch(SQLException e) {
                             System.err.println("Failed to insert: " + e.getMessage());
@@ -105,5 +106,4 @@ public class App {
             System.err.println("Failed to start server: " + e.getMessage());
         }
     }
-    //test 2
 }
