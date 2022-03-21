@@ -24,9 +24,9 @@ function postPlanets(){
     }
     console.log(planet);
     fetch("/planets",{
-        method: "POST"
+        method: "POST",
         headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(planet)

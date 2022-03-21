@@ -50,7 +50,7 @@ class Planet{
 public class App {
     public static void main(String[] args) throws SQLException {
         // Connect to DB
-        Connection connection = DriverManager.getConnection("jdbc:mem:project:INIT=runscript from 'classpath:schema.sql'", "sa", "");
+        Connection connection = DriverManager.getConnection("jdbc:h2:mem:test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;INIT=runscript from 'classpath:schema.sql'", "sa", "");
 
         // connection.DriverManager.getConnection("jdbc:h2:mem", "Planets", "");
         // connection.createStatement().execute(sql"CREATE TABLE PLANETS(id int primary key, Name varchar);
@@ -84,7 +84,7 @@ public class App {
                         try{
                             PreparedStatement stmt = connection.prepareStatement("insert into 'planet' values(?, ?)");
                             stmt.setInt(1, planet.getplanetID());
-                            stmt.setString(2, .getName());
+                            stmt.setString(2, planet.getName());
                             stmt.executeUpdate();
                         } catch(SQLException e) {
                             System.err.println("Failed to insert: " + e.getMessage());
